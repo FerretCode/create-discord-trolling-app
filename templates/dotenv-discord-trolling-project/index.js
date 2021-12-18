@@ -2,7 +2,13 @@
 require("dotenv").config();
 
 //import components from the library
-const { Client, Intents, Manager, Command } = require("discord-trolling");
+const {
+  Client,
+  Intents,
+  Manager,
+  Command,
+  CommandHandler,
+} = require("discord-trolling");
 
 //recommended format for creating command structures
 let command = () => {
@@ -38,9 +44,16 @@ Manager.registerCommands([command()], {
 //create client
 let bot = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
-//listen for a command
+const commandHandler = new CommandHandler({
+  path: __dirname + "/commands",
+  client: bot,
+});
+
+commandHandler.startHandling();
+
+//if you want classic handling
 bot.on("interactionCreate", (interaction) => {
-  if (interaction.commandName === "pong") interaction.reply("pong");
+  if (interaction.commandName === "pong") console.log("interaction recieved");
 });
 
 //login (trollface)
