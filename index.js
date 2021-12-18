@@ -17,13 +17,14 @@ figlet("discord-trolling", (_, data) => {
         choices: [
           "empty-discord-trolling-project",
           "dotenv-discord-trolling-project",
+          "empty-discord-trolling-command",
         ],
       },
       {
         type: "input",
         name: "name",
-        message: "What should the project be called?",
-        default: "discord-trolling-app",
+        message: "What should the project or command be called?",
+        default: "discord-trolling-template",
       },
       {
         type: "input",
@@ -33,17 +34,33 @@ figlet("discord-trolling", (_, data) => {
       },
     ])
     .then((answers) => {
-      let spinner = new multispinner([`${answers["template-type"]}...`], {
-        preText: "Copying template",
-      });
+      if (answers["template-type"] !== "empty-discord-trolling-command") {
+        let spinner = new multispinner([`${answers["template-type"]}...`], {
+          preText: "Copying template",
+        });
 
-      fs.copySync(
-        `./templates/${answers["template-type"]}`,
-        `${answers.path}/${answers.name}`
-      );
+        fs.copySync(
+          `${__dirname}/templates/${answers["template-type"]}`,
+          `${answers.path}/${answers.name}`
+        );
 
-      spinner.success(`${answers["template-type"]}...`);
-      console.log("Files copied!");
+        spinner.success(`${answers["template-type"]}...`);
+        console.log("Files copied!");
+      } else {
+        console.log("ballz");
+
+        let spinner = new multispinner([`${answers["template-type"]}...`], {
+          preText: "Copying command",
+        });
+
+        fs.copySync(
+          `${__dirname}/templates/${answers["template-type"]}.js`,
+          `${answers.path}/${answers.name}.js`
+        );
+
+        spinner.success(`${answers["template-type"]}...`);
+        console.log("Files copied!");
+      }
     })
     .catch((err) => console.error(err));
 });

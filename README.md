@@ -6,6 +6,7 @@ A package for generating discord-trolling projects with zero effort
 
 - Open a terminal
 - `npx create-discord-trolling-app`
+- Choose your template, path and name
 - You're done! It's as simple as that.
 
 If you have a problem, please open an issue.
