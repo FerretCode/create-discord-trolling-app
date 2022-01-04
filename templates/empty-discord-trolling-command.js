@@ -3,7 +3,7 @@ const { Troll } = require("discord-trolling");
 /**
  * Your command
  */
-class CommandName extends Troll {
+module.exports.CommandName = class extends Troll {
   constructor(interaction, client) {
     super(interaction, client);
 
@@ -11,8 +11,4 @@ class CommandName extends Troll {
       //TODO: implement command
     };
   }
-}
-
-module.exports = {
-  CommandName,
 };

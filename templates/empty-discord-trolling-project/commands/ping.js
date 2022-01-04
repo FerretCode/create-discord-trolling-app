@@ -3,7 +3,7 @@ const { Troll } = require("discord-trolling");
 /**
  * Your command
  */
-class ping extends Troll {
+module.exports.ping = class extends Troll {
   constructor(interaction, client) {
     super(interaction, client);
 
@@ -11,8 +11,4 @@ class ping extends Troll {
       interaction.reply("pong");
     };
   }
-}
-
-module.exports = {
-  ping,
 };

@@ -47,8 +47,6 @@ figlet("discord-trolling", (_, data) => {
         spinner.success(`${answers["template-type"]}...`);
         console.log("Files copied!");
       } else {
-        console.log("ballz");
-
         let spinner = new multispinner([`${answers["template-type"]}...`], {
           preText: "Copying command",
         });
