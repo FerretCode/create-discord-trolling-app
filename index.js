@@ -17,6 +17,7 @@ figlet("discord-trolling", (_, data) => {
         choices: [
           "empty-discord-trolling-project",
           "dotenv-discord-trolling-project",
+          "firebase-discord-trolling-project",
           "empty-discord-trolling-command",
         ],
       },
