@@ -1,4 +1,6 @@
 #! /usr/bin/env node
+const { exec } = require("child_process");
+
 const figlet = require("figlet");
 const inquirer = require("inquirer");
 const fs = require("fs-extra");
@@ -47,6 +49,17 @@ figlet("discord-trolling", (_, data) => {
 
         spinner.success(`${answers["template-type"]}...`);
         console.log("Files copied!");
+
+        let installSpinner = new multispinner(["dependencies"], {
+          preText: "Installing",
+        });
+
+        exec("npm install", (err, stdout, stderr) => {
+          if (err) console.error(err);
+          if (stderr) console.error(err);
+
+          installSpinner.success("dependencies");
+        });
       } else {
         let spinner = new multispinner([`${answers["template-type"]}...`], {
           preText: "Copying command",

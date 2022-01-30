@@ -3,12 +3,12 @@ const { Troll } = require("discord-trolling");
 /**
  * Your command
  */
-module.exports.Command = class extends Troll {
+module.exports.ping = class extends Troll {
   constructor(interaction, client) {
     super(interaction, client);
 
     this.run = () => {
-      //TODO: implement command
+      interaction.reply("pong");
     };
   }
 };
